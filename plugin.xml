@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0" id="cordova-plugin-wefitter-ios" version="0.0.1">
+    <name>WeFitterHealthKit</name>
+    <description>A Cordova plugin for WeFitter for HealthKit</description>
+    <keywords>cordova,ios,wefitter,healthkit</keywords>
+
+    <js-module src="www/wefitterhealthkit.js" name="wefitterhealthkit">
+        <clobbers target="wefitterhealthkit" />
+    </js-module>
+
+    <platform name="ios">
+        <config-file target="config.xml" parent="/*">
+            <feature name="WeFitterHealthKit">
+                <param name="ios-package" value="WeFitterHealthKit" />
+            </feature>
+        </config-file>
+
+        <preference name="HEALTH_READ_PERMISSION" default="WeFitter would like to read your activity data" />
+        <preference name="HEALTH_WRITE_PERMISSION" default="WeFitter would like to write your activity data" />
+
+        <config-file target="*-Info.plist" parent="NSHealthShareUsageDescription">
+            <string>$HEALTH_READ_PERMISSION</string>
+        </config-file>
+
+        <config-file target="*-Info.plist" parent="NSHealthUpdateUsageDescription">
+            <string>$HEALTH_WRITE_PERMISSION</string>
+        </config-file>
+
+        <config-file target="*/Entitlements-Debug.plist" parent="com.apple.developer.healthkit">
+            <true/>
+        </config-file>
+
+        <config-file target="*/Entitlements-Release.plist" parent="com.apple.developer.healthkit">
+            <true/>
+        </config-file>
+
+        <config-file target="*/Entitlements-Debug.plist" parent="com.apple.developer.healthkit.background-delivery">
+            <true/>
+        </config-file>
+
+        <config-file target="*/Entitlements-Release.plist" parent="com.apple.developer.healthkit.background-delivery">
+            <true/>
+        </config-file>
+
+        <header-file src="src/ios/WeFitterHealthKit.h" target-dir="WeFitterHealthKit" />
+        <source-file src="src/ios/WeFitterHealthKit.m" target-dir="WeFitterHealthKit" />
+
+        <framework src="src/ios/WeFitterLib.xcframework" custom="true" embed="true" />
+        <framework src="HealthKit.framework" weak="true" />
+    </platform>
+</plugin>
