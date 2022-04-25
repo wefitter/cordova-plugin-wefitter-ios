@@ -5,7 +5,7 @@ Cordova plugin for integrating WeFitter and HealthKit into your app.
 ## Installation
 
 ```sh
-cordova plugin add https://github.com/ThunderbyteAI/cordova-plugin-wefitter-ios.git#v0.0.1
+cordova plugin add https://github.com/ThunderbyteAI/cordova-plugin-wefitter-ios.git#v0.1.0
 ```
 
 In Xcode for your target:
