@@ -1,5 +1,17 @@
 # Changelog
 
+## 1.0.0
+
+Updated WeFitter API version to 1.3
+
+Enabled background delivery for all supported datatypes
+
+Added `configure`, `canConnectToHealthData` and `getConnectedProfileId`
+
+BREAKING CHANGE:
+
+- Removed param from `connect`
+
 ## 0.1.1
 
 Fixed bug preventing upload of daily summaries

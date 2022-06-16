@@ -5,8 +5,11 @@
 
 @interface WeFitterHealthKit : CDVPlugin
 
+- (void)configure:(CDVInvokedUrlCommand*)command;
 - (void)connect:(CDVInvokedUrlCommand*)command;
 - (void)disconnect:(CDVInvokedUrlCommand*)command;
+- (void)canConnectToHealthData:(CDVInvokedUrlCommand*)command;
+- (void)getConnectedProfileId:(CDVInvokedUrlCommand*)command;
 - (void)getStatus:(CDVInvokedUrlCommand*)command;
 
 @end
