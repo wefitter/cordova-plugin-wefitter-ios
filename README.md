@@ -5,7 +5,7 @@ Cordova plugin for integrating WeFitter and HealthKit into your app.
 ## Installation
 
 ```sh
-cordova plugin add https://github.com/ThunderbyteAI/cordova-plugin-wefitter-ios.git#v1.0.0
+cordova plugin add https://github.com/ThunderbyteAI/cordova-plugin-wefitter-ios.git#v1.1.0
 ```
 
 In Xcode for your target:
@@ -23,7 +23,7 @@ Add the following code inside `onDeviceReady` in `www/js/index.js`:
 ```js
 var configureSuccess = function (message) {
   console.log(message);
-  // Connect can be called after configure has succeeded.
+  // Connect can be called after configure has succeeded
   wefitterhealthkit.connect(success, failure);
 };
 
@@ -38,12 +38,12 @@ var failure = function (message) {
 };
 
 var config = {
-  token: "YOUR_TOKEN", // required, WeFitter API profile bearer token.
+  token: "YOUR_TOKEN", // required, WeFitter API profile bearer token
   url: "CUSTOM_URL", // optional, the url should be base without `v1.3/ingest/` as the library will append this. Default: `https://api.wefitter.com/api/`
   startDate: "CUSTOM_START_DATE", // optional with format `yyyy-MM-dd`, by default data of the past 7 days will be uploaded
 };
 
-// Configure should be called every time your app starts when HealthKit is supported.
+// Configure should be called every time your app starts when HealthKit is supported
 wefitterhealthkit.canConnectToHealthData((supported) => {
   if (supported) {
     wefitterhealthkit.configure(config, configureSuccess, failure);
