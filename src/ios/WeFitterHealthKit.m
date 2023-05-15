@@ -10,6 +10,7 @@
     NSString* token = params[@"token"];
     NSString* url = params[@"url"];
     NSString* startDateString = params[@"startDate"];
+    NSArray* enabledDataTypes = params[@"enabledDataTypes"];
 
     // convert NString to NSDate
     NSDate* startDate = nil;
@@ -19,7 +20,7 @@
         startDate = [dateFormatter dateFromString:startDateString];
     }
 
-    WeFitterConfig* config = [[WeFitterConfig alloc] initWithToken:token url:url startDate:startDate];
+    WeFitterConfig* config = [[WeFitterConfig alloc] initWithToken:token url:url startDate:startDate enabledDataTypes:enabledDataTypes];
 
     [WeFitter configure:config
              completion:^(BOOL success, NSError* error) {
