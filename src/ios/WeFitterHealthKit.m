@@ -11,6 +11,8 @@
     NSString* url = params[@"url"];
     NSString* startDateString = params[@"startDate"];
     NSArray* enabledDataTypes = params[@"enabledDataTypes"];
+    BOOL enableDailyDetail = [params[@"enableDailyDetail"] boolValue];
+    BOOL enableHeartRateSamples = [params[@"enableHeartRateSamples"] boolValue];
 
     // convert NString to NSDate
     NSDate* startDate = nil;
@@ -19,32 +21,32 @@
         [dateFormatter setDateFormat:@"yyyy-MM-dd"];
         startDate = [dateFormatter dateFromString:startDateString];
     }
-
-    WeFitterConfig* config = [[WeFitterConfig alloc] initWithToken:token url:url startDate:startDate enabledDataTypes:enabledDataTypes];
-
+    
+    WeFitterConfig* config = [[WeFitterConfig alloc] initWithToken:token url:url startDate:startDate enabledDataTypes:enabledDataTypes enableDailyDetail:enableDailyDetail enableHeartRateSamples:enableHeartRateSamples];
+    
     [WeFitter configure:config
              completion:^(BOOL success, NSError* error) {
-               CDVPluginResult* pluginResult = nil;
-               if (success) {
-                   pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"Configured HealthKit"];
-               } else {
-                   NSString* msg = [NSString stringWithFormat:@"Failed to configure HealthKit: %@", error.localizedDescription];
-                   pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:msg];
-               }
-               [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
-             }];
+        CDVPluginResult* pluginResult = nil;
+        if (success) {
+            pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"Configured HealthKit"];
+        } else {
+            NSString* msg = [NSString stringWithFormat:@"Failed to configure HealthKit: %@", error.localizedDescription];
+            pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:msg];
+        }
+        [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+    }];
 }
 
 - (void)connect:(CDVInvokedUrlCommand*)command {
     [WeFitter connect:^(BOOL success, NSError* error) {
-      CDVPluginResult* pluginResult = nil;
-      if (success) {
-          pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"Connected to HealthKit"];
-      } else {
-          NSString* msg = [NSString stringWithFormat:@"Error connecting profile: %@", error.localizedDescription];
-          pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:msg];
-      }
-      [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+        CDVPluginResult* pluginResult = nil;
+        if (success) {
+            pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:@"Connected to HealthKit"];
+        } else {
+            NSString* msg = [NSString stringWithFormat:@"Error connecting profile: %@", error.localizedDescription];
+            pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR messageAsString:msg];
+        }
+        [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
     }];
 }
 
