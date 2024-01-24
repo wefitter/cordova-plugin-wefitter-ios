@@ -19,30 +19,40 @@ module.exports = {
     },
     DataType: {
         ActiveEnergyBurned: 0,
-        BasalEnergyBurned: 1,
-        BloodGlucose: 2,
-        BloodPressureDiastolic: 3,
-        BloodPressureSystolic: 4,
-        BodyFatPercentage: 5,
-        BodyMass: 6,
-        BodyMassIndex: 7,
-        BodyTemperature: 8,
-        DistanceCycling: 9,
-        DistanceDownhillSnowSports: 10,
-        DistanceSwimming: 11,
-        DistanceWalkingRunning: 12,
-        DistanceWheelchair: 13,
-        Electrocardiogram: 14, // only available iOS 14+
-        HeartRate: 15,
-        HeartRateVariabilitySDNN: 16,
-        Height: 17,
-        MindfulSession: 18,
-        OxygenSaturation: 19,
-        RestingHeartRate: 20,
-        SleepAnalysis: 21,
-        StepCount: 22,
-        Vo2Max: 23,
-        Workout: 24
+        AppleExerciseTime: 1,
+        AppleMoveTime: 2, // only available iOS 14.5+
+        BasalEnergyBurned: 3,
+        BloodGlucose: 4,
+        BloodPressureDiastolic: 5,
+        BloodPressureSystolic: 6,
+        BodyFatPercentage: 7,
+        BodyMass: 8,
+        BodyMassIndex: 9,
+        BodyTemperature: 10,
+        CyclingCadence: 11, // only available iOS 17+
+        CyclingPower: 12, // only available iOS 17+
+        CyclingSpeed: 13, // only available iOS 17+
+        DistanceCycling: 14,
+        DistanceDownhillSnowSports: 15,
+        DistanceSwimming: 16,
+        DistanceWalkingRunning: 17,
+        DistanceWheelchair: 18,
+        Electrocardiogram: 19, // only available iOS 14+
+        HeartRate: 20,
+        HeartRateVariabilitySDNN: 21,
+        Height: 22,
+        MindfulSession: 23,
+        OxygenSaturation: 24,
+        RestingHeartRate: 25,
+        RunningPower: 26, // only available iOS 16+
+        RunningSpeed: 27, // only available iOS 16+
+        SleepAnalysis: 28,
+        StairAscentSpeed: 29, // only available iOS 14+
+        StairDescentSpeed: 30, // only available iOS 14+
+        StepCount: 31,
+        Vo2Max: 32,
+        WalkingSpeed: 33, // only available iOS 14+
+        Workout: 34,
     },
     Status: {
         NotConfigured: 0,
